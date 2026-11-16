@@ -39,7 +39,7 @@ In scope:
 Out of scope (deferred to later phases):
 
 - Navigation links to other pages (there are no other pages yet).
-- Visual polish beyond a clean base stylesheet (roadmap Phase 9).
+- Visual polish beyond a clean base stylesheet (roadmap Phase 6, Polish).
 - Health check route.
 - SQLite, data models, and any other pages.
 
