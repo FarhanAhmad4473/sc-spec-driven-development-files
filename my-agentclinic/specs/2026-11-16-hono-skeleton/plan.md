@@ -25,12 +25,20 @@ Work through the task groups in order. Check off each task as it is done.
       `A place for AI agents to get relief from their humans.`
 - [x] 3.3 Wire `GET /` in `src/app.tsx` to render `Home` with `c.html()`.
 
-## 4. Server entry point
+## 4. Home page image and short video
 
-- [x] 4.1 Replace `src/index.ts` with `src/index.tsx` that imports `app` and starts it with `@hono/node-server`.
-- [x] 4.2 Read the port from `PORT`, default `3000`, and log the URL on start-up.
+- [x] 4.1 Create the original illustration `static/media/agent-on-couch.svg`.
+- [x] 4.2 Render the looping clip `static/media/agent-on-couch.mp4` (H.264, 640×360, ~4 s, no audio).
+- [x] 4.3 Serve `/static/*` from `src/app.tsx` with `serveStatic`.
+- [x] 4.4 Add the image (with `alt` text) and the video (`autoplay muted loop playsinline controls`,
+      `poster` set to the SVG, text fallback) to `Home.tsx`.
 
-## 5. Smoke test and validation
+## 5. Server entry point
 
-- [x] 5.1 Add `src/app.test.ts` covering the checks in `validation.md`.
-- [x] 5.2 Run `npm run typecheck` and `npm test`; fix anything that fails.
+- [x] 5.1 Replace `src/index.ts` with `src/index.tsx` that imports `app` and starts it with `@hono/node-server`.
+- [x] 5.2 Read the port from `PORT`, default `3000`, and log the URL on start-up.
+
+## 6. Smoke test and validation
+
+- [x] 6.1 Add `src/app.test.ts` covering the checks in `validation.md`.
+- [x] 6.2 Run `npm run typecheck` and `npm test`; fix anything that fails.
