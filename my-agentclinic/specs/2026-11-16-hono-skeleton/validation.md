@@ -8,7 +8,7 @@ The phase can be merged when all of the following pass.
 
 ## 2. Automated smoke test
 
-`npm test` (Vitest) passes, with tests that call `app.request()` directly:
+`npm test` (Vitest, tests in `tests/`) passes, with tests that call `app.request()` directly:
 
 - `GET /` returns status `200`.
 - The `GET /` response has a `Content-Type` of `text/html`.
@@ -28,6 +28,12 @@ The phase can be merged when all of the following pass.
   with the page content inside `<main>`.
 - The page links `/static/styles.css`, and `GET /static/styles.css` returns `200`
   with type `text/css`.
+- The page has the viewport meta tag
+  `width=device-width, initial-scale=1`.
+- `styles.css` is mobile-first: it has `min-width: 600px` and `min-width: 900px`
+  media queries, makes `img` and `video` fluid (`max-width: 100%`, `height: auto`),
+  and uses `clamp()` for type.
+- Each layout component (`Header`, `Main`, `Footer`, `Layout`) has its own unit tests.
 - An unknown route (e.g. `GET /no-such-page`) returns status `404`.
 
 ## Definition of done
@@ -38,4 +44,6 @@ The phase can be merged when all of the following pass.
 - `Header`, `Main` and `Footer` each live in their own file in `src/components/`,
   and `Layout.tsx` imports them.
 - In a browser, the page is styled by `styles.css` and follows the system light or dark mode.
+- At `375px` and `1280px` wide, the page has no horizontal scrolling, the media
+  fits the screen, and the text is readable.
 - No out-of-scope work (navigation to other pages, health route, database) has been added.

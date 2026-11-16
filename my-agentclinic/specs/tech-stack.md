@@ -29,8 +29,35 @@
 ## Styling
 
 - Modern CSS (a global stylesheet with custom properties).
-- Responsive layout; support light and dark mode.
+- Support light and dark mode.
 - Target current evergreen browsers (Chrome, Edge, Firefox, Safari).
+
+### Responsive design
+
+Every page must follow responsive design. This applies from the first phase, not as later polish.
+
+- **Mobile first:** base styles target small screens; `min-width` media queries
+  add to them for wider screens.
+- **Breakpoints:** `600px` (large phone / small tablet) and `900px` (tablet / desktop).
+- **Viewport:** every page has `<meta name="viewport" content="width=device-width, initial-scale=1">`.
+- **Fluid layout:** content width is capped with `max-width`, side padding is
+  at least `16px`, and nothing causes horizontal scrolling down to `320px` wide.
+- **Fluid media:** images and video use `max-width: 100%; height: auto`.
+- **Readable type:** font sizes scale with `clamp()`; body text never drops below `16px`.
+- **Touch friendly:** links and buttons have tap targets of at least `44px` high.
+- **Verified** with tests where possible (markup and stylesheet rules) and by
+  checking the page at phone (`375px`) and desktop (`1280px`) widths.
+
+## Testing
+
+- **Vitest** is the test framework, and passing tests are how a feature is validated
+  before it can be merged.
+- Tests live in `tests/`, named `*.test.ts(x)`, and call the Hono app directly with
+  `app.request()`, so no server or open port is needed.
+- npm scripts:
+  - `npm test` runs the whole suite once (`vitest run`); this is the merge gate.
+  - `npm run test:watch` re-runs tests on save during development (`vitest`).
+- Every feature spec's `validation.md` lists the behaviors its tests must cover.
 
 ## Tooling
 

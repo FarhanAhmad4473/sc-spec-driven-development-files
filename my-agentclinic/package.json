@@ -6,7 +6,8 @@
     "dev": "tsx watch src/index.tsx",
     "start": "tsx src/index.tsx",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.8",

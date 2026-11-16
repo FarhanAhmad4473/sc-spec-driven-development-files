@@ -29,9 +29,12 @@ In scope:
   that every page renders inside.
 - A global **CSS stylesheet**, `static/styles.css`, linked from the layout.
 - Static file serving for the media and stylesheet under `/static/*`.
+- **Responsive design** (see `specs/tech-stack.md`): the home page and layout
+  work from `320px` phones to wide desktop screens, with no horizontal scrolling,
+  fluid image and video, and readable type.
 - Separate the app definition from the server start-up, so tests can call the
   app directly without opening a port.
-- npm scripts: `dev` (watch mode), `start`, `typecheck`, `test`.
+- npm scripts: `dev` (watch mode), `start`, `typecheck`, `test`, `test:watch`.
 
 Out of scope (deferred to later phases):
 
@@ -52,7 +55,8 @@ Out of scope (deferred to later phases):
   main and footer are each in their own file (`Header.tsx`, `Main.tsx`,
   `Footer.tsx`), and `Layout.tsx` imports and composes them.
 - **Styling:** one plain CSS file, `static/styles.css`, linked with a
-  `<link rel="stylesheet">` tag. No CSS preprocessor or framework.
+  `<link rel="stylesheet">` tag. No CSS preprocessor or framework. The CSS is
+  mobile-first, with `min-width` breakpoints at `600px` and `900px`.
 - **Port:** `3000` by default, overridable with the `PORT` environment variable.
 - **TypeScript:** `strict` mode, ES modules, `tsc --noEmit` for type checking.
 - **Media assets:** live in `static/media/` and are served with
@@ -60,7 +64,8 @@ Out of scope (deferred to later phases):
   AgentClinic. The SVG is the source of truth. The MP4 (H.264, 640×360, about
   4 seconds, no audio) is rendered from it by a one-off script whose tools are
   not app dependencies; the rendered file is committed.
-- **Testing:** Vitest, calling `app.request()` directly with no network.
+- **Testing:** Vitest (see `specs/tech-stack.md`). Tests live in `tests/`, call
+  `app.request()` directly with no network, and are configured by `vitest.config.ts`.
 - **Dependencies:** keep them to `hono`, `@hono/node-server` (runtime) and
   `typescript`, `tsx`, `vitest`, `@types/node` (dev).
 
