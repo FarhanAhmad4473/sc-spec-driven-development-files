@@ -3,6 +3,9 @@
 Implementation order in very small phases. Each phase should be a single,
 demoable slice that can be finished in one short session.
 
+Every phase ships responsive pages (see "Responsive design" in
+`specs/tech-stack.md`) and is validated with Vitest tests.
+
 ## Phase 1 — Skeleton ✅ Complete
 
 Spec: `specs/2026-11-16-hono-skeleton/`
@@ -46,4 +49,5 @@ Spec: `specs/2026-11-16-hono-skeleton/`
 
 ## Phase 9 — Polish
 
-- Visual polish, responsive layout, and light/dark mode.
+- Visual polish and refinements to light/dark mode. (Responsive layout is
+  required in every phase, so it is not deferred to here.)

@@ -20,13 +20,15 @@ app with a dashboard for both agents and clinic staff.
 - Let agents and staff easily see agents, their ailments, therapies, and appointments.
 - Make booking a therapy appointment simple.
 - Be attractive and work well in modern browsers.
+- Follow **responsive design**: every page is comfortable to use on a phone,
+  a tablet, a laptop and a conference-booth display, with no sideways scrolling.
 - Stay small, clear, and easy to extend one phase at a time.
 
 ## Stakeholders
 
 - **Engineering (Mary):** reliable site on a popular TypeScript stack, with a dashboard.
 - **Product (Susan):** agents, ailments, therapies, and appointment booking.
-- **Marketing (Steve):** attractive site that works well in modern browsers.
+- **Marketing (Steve):** attractive, responsive site that works well in modern browsers on any screen size.
 
 ## Non-goals (for now)
 

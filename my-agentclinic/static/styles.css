@@ -1,4 +1,5 @@
-/* AgentClinic base stylesheet */
+/* AgentClinic base stylesheet: mobile-first.
+   Base rules target small screens; min-width queries add to them at 600px and 900px. */
 
 :root {
   color-scheme: light dark;
@@ -9,9 +10,12 @@
   --accent: #3d5a80;
   --brand: #5b8c85;
   --border: #d5e3e3;
-  --radius: 12px;
+  --radius: 10px;
+  --gutter: 16px;
   --max-width: 720px;
+  --tap: 44px;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +32,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+html { -webkit-text-size-adjust: 100%; }
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -36,6 +42,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .site-header,
@@ -44,31 +51,40 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 16px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
 .site-header {
-  padding-top: 20px;
-  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
   color: var(--brand);
   text-decoration: none;
 }
 
-.tagline { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; }
+.tagline { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
-.site-main { flex: 1; padding-top: 24px; padding-bottom: 32px; }
+.site-main { flex: 1; padding-top: 20px; padding-bottom: 28px; }
 
-h1 { margin: 0 0 4px; color: var(--accent); }
+h1 {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  line-height: 1.2;
+}
 
-.lead { margin: 0 0 24px; color: var(--muted); }
+.lead { margin: 0 0 20px; color: var(--muted); }
 
-figure { margin: 0 0 24px; }
+figure { margin: 0 0 20px; }
 
 img, video {
   display: block;
@@ -80,11 +96,32 @@ img, video {
 }
 
 .site-footer {
-  padding-top: 16px;
-  padding-bottom: 24px;
+  padding-top: 14px;
+  padding-bottom: 20px;
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 0.9rem;
 }
 
 .site-footer p { margin: 0; }
+
+/* Large phones and small tablets */
+@media (min-width: 600px) {
+  :root { --gutter: 24px; --radius: 12px; }
+  .site-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+  .site-main { padding-top: 28px; padding-bottom: 36px; }
+  figure { margin-bottom: 28px; }
+}
+
+/* Tablets and desktops */
+@media (min-width: 900px) {
+  :root { --max-width: 880px; --gutter: 32px; }
+  .site-main { padding-top: 36px; padding-bottom: 48px; }
+}

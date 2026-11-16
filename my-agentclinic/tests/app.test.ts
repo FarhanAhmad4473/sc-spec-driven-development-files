@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { app } from './app.js'
+import { app } from '../src/app.js'
 
 const IMAGE = '/static/media/agent-on-couch.svg'
 const VIDEO = '/static/media/agent-on-couch.mp4'

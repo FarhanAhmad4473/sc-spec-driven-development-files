@@ -12,5 +12,9 @@
     "jsxImportSource": "hono/jsx",
     "noEmit": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "tests",
+    "vitest.config.ts"
+  ]
 }
