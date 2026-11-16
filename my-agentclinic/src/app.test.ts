@@ -34,6 +34,28 @@ describe('GET /', () => {
   })
 })
 
+describe('layout', () => {
+  it('renders header, main and footer', async () => {
+    const body = await (await app.request('/')).text()
+    expect(body).toMatch(/<header[^>]*>[\s\S]*AgentClinic[\s\S]*<\/header>/)
+    expect(body).toMatch(/<main[^>]*>[\s\S]*<h1>AgentClinic<\/h1>[\s\S]*<\/main>/)
+    expect(body).toMatch(/<footer[^>]*>[\s\S]*<\/footer>/)
+    expect(body.indexOf('<header')).toBeLessThan(body.indexOf('<main'))
+    expect(body.indexOf('<main')).toBeLessThan(body.indexOf('<footer'))
+  })
+
+  it('links the stylesheet', async () => {
+    const body = await (await app.request('/')).text()
+    expect(body).toMatch(/<link rel="stylesheet" href="\/static\/styles.css"\/?>/)
+  })
+
+  it('serves the stylesheet as CSS', async () => {
+    const res = await app.request('/static/styles.css')
+    expect(res.status).toBe(200)
+    expect(res.headers.get('content-type')).toMatch(/^text\/css/)
+  })
+})
+
 describe('static media', () => {
   it('serves the SVG image', async () => {
     const res = await app.request(IMAGE)

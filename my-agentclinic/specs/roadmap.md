@@ -3,11 +3,14 @@
 Implementation order in very small phases. Each phase should be a single,
 demoable slice that can be finished in one short session.
 
-## Phase 1 — Skeleton
+## Phase 1 — Skeleton ✅ Complete
 
-- Set up a Hono server in TypeScript running on Node.
-- Home page with the AgentClinic name and a one-line tagline.
-- Basic JSX layout component: header, main content area, footer.
+Spec: `specs/2026-11-16-hono-skeleton/`
+
+- [x] Set up a Hono server in TypeScript running on Node.
+- [x] Home page with the AgentClinic name and a one-line tagline.
+- [x] Basic JSX layout component: header, main content area, footer.
+- [x] Added along the way: hero image, short looping video, and a base stylesheet.
 
 ## Phase 2 — Agents list
 

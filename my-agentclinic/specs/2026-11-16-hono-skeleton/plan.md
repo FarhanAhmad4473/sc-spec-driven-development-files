@@ -33,12 +33,30 @@ Work through the task groups in order. Check off each task as it is done.
 - [x] 4.4 Add the image (with `alt` text) and the video (`autoplay muted loop playsinline controls`,
       `poster` set to the SVG, text fallback) to `Home.tsx`.
 
-## 5. Server entry point
+## 5. Main layout component and stylesheet
 
-- [x] 5.1 Replace `src/index.ts` with `src/index.tsx` that imports `app` and starts it with `@hono/node-server`.
-- [x] 5.2 Read the port from `PORT`, default `3000`, and log the URL on start-up.
+- [x] 5.1 Create the three subcomponents, each in its own file under `src/components/`:
+  - `Header.tsx`: a `<header>` with the AgentClinic name linking to `/` and the tagline.
+  - `Main.tsx`: a `<main>` that wraps the page's `children`.
+  - `Footer.tsx`: a `<footer>` with a short AgentClinic footer line.
+- [x] 5.1a Create `src/components/Layout.tsx`, which imports those three files and
+      renders the full HTML document (doctype, `<html lang="en">`, `<head>` with
+      charset, viewport and a `title` prop) with `Header`, `Main` and `Footer`
+      in the body.
+- [x] 5.2 Make the stylesheet `static/styles.css`: CSS custom properties for colors,
+      light and dark mode, a centered readable layout, and responsive media
+      (`max-width: 100%; height: auto`).
+- [x] 5.3 Link the stylesheet from `Layout`'s `<head>` with
+      `<link rel="stylesheet" href="/static/styles.css">`.
+- [x] 5.4 Refactor `Home.tsx` to render its content (image and video) inside `Layout`.
 
-## 6. Smoke test and validation
+## 6. Server entry point
 
-- [x] 6.1 Add `src/app.test.ts` covering the checks in `validation.md`.
-- [x] 6.2 Run `npm run typecheck` and `npm test`; fix anything that fails.
+- [x] 6.1 Replace `src/index.ts` with `src/index.tsx` that imports `app` and starts it with `@hono/node-server`.
+- [x] 6.2 Read the port from `PORT`, default `3000`, and log the URL on start-up.
+
+## 7. Smoke test and validation
+
+- [x] 7.1 Add `src/app.test.ts` covering the checks in `validation.md`.
+- [x] 7.2 Extend the tests for the layout (`<header>`, `<main>`, `<footer>`) and the stylesheet.
+- [x] 7.3 Run `npm run typecheck` and `npm test`; fix anything that fails.

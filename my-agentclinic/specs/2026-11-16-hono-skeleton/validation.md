@@ -24,6 +24,10 @@ The phase can be merged when all of the following pass.
   `/static/media/agent-on-couch.mp4` of type `video/mp4`.
 - `GET /static/media/agent-on-couch.svg` returns `200` with type `image/svg+xml`.
 - `GET /static/media/agent-on-couch.mp4` returns `200` with type `video/mp4` and a non-empty body.
+- The home page renders `<header>`, `<main>` and `<footer>`, in that order,
+  with the page content inside `<main>`.
+- The page links `/static/styles.css`, and `GET /static/styles.css` returns `200`
+  with type `text/css`.
 - An unknown route (e.g. `GET /no-such-page`) returns status `404`.
 
 ## Definition of done
@@ -31,4 +35,7 @@ The phase can be merged when all of the following pass.
 - Every task in `plan.md` is checked off.
 - Both checks above pass on a clean `npm install`.
 - In a browser, the image shows and the video plays on its own, looping and muted.
-- No out-of-scope work (shared layout, CSS, health route, database) has been added.
+- `Header`, `Main` and `Footer` each live in their own file in `src/components/`,
+  and `Layout.tsx` imports them.
+- In a browser, the page is styled by `styles.css` and follows the system light or dark mode.
+- No out-of-scope work (navigation to other pages, health route, database) has been added.

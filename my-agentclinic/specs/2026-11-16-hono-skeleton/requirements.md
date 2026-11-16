@@ -25,17 +25,18 @@ In scope:
   scene (the agent breathing, blinking, and "Zzz" drifting up). It autoplays
   muted and inline, has `controls`, uses the image as its `poster`, and offers a
   text fallback for browsers that can't play it.
-- Static file serving for these assets under `/static/*`.
+- A main **layout component** with three subcomponents (header, main, footer)
+  that every page renders inside.
+- A global **CSS stylesheet**, `static/styles.css`, linked from the layout.
+- Static file serving for the media and stylesheet under `/static/*`.
 - Separate the app definition from the server start-up, so tests can call the
   app directly without opening a port.
 - npm scripts: `dev` (watch mode), `start`, `typecheck`, `test`.
 
 Out of scope (deferred to later phases):
 
-- Shared JSX layout component (header, nav, footer). The home page is a single
-  self-contained component for now.
-- Any styling beyond browser defaults.
-- Global CSS stylesheet (static serving exists for the media assets only).
+- Navigation links to other pages (there are no other pages yet).
+- Visual polish beyond a clean base stylesheet (roadmap Phase 9).
 - Health check route.
 - SQLite, data models, and any other pages.
 
@@ -47,6 +48,11 @@ Out of scope (deferred to later phases):
   `c.html()`; no React and no client-side JavaScript.
 - **Module layout:** `src/app.tsx` exports the Hono `app`; `src/pages/Home.tsx`
   holds the home page; `src/index.tsx` imports the app and starts the server.
+- **Components:** one component per file in `src/components/`. The header,
+  main and footer are each in their own file (`Header.tsx`, `Main.tsx`,
+  `Footer.tsx`), and `Layout.tsx` imports and composes them.
+- **Styling:** one plain CSS file, `static/styles.css`, linked with a
+  `<link rel="stylesheet">` tag. No CSS preprocessor or framework.
 - **Port:** `3000` by default, overridable with the `PORT` environment variable.
 - **TypeScript:** `strict` mode, ES modules, `tsc --noEmit` for type checking.
 - **Media assets:** live in `static/media/` and are served with
